@@ -40,5 +40,49 @@
 			</tbody>
 		</table>
 <!--books一覧 -->
+		<h2>gmap</h2>
+		<div id='map'></div>
+		<style>
+		#map{
+		  height: 400px;
+		}
+		</style>
+<script>
+/*
+mapを関数の外で定義(codeAddressでも使うため)
+geocoderを用意
+*/
+
+let map
+let geocoder
+
+function initMap(){
+  // geocoderを初期化
+  geocoder = new google.maps.Geocoder()
+  codeAddress("東京都世田谷区")
+}
+
+
+function codeAddress(addr){
+  // 入力を取得
+
+  // geocodingしたあとmapを移動
+  geocoder.geocode( { 'address': addr}, function(results, status) {
+    if (status == 'OK') {
+
+
+    	map = new google.maps.Map(document.getElementById('map'), {
+  			zoom: 15
+  		});
+　　　　　　　　　　　　// map.setCenterで地図が移動
+      map.setCenter(results[0].geometry.location);
+
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
+		</script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9XHqRAz1QhAnoypXt5R2RvrbFP_YvPbU&callback=initMap" async defer></script>
 	</div>
 </div>
