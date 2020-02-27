@@ -62,5 +62,9 @@ class User < ApplicationRecord
       self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
     end
 
+    def address
+      prefecture_name + address_city + address_street
+    end
+
 
 end

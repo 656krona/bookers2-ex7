@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2020_02_26_055310) do
     t.string "profile_image_id"
     t.integer "postcode"
     t.integer "prefecture_code"
+    t.string "prefecture_name"
     t.string "address_city"
     t.string "address_street"
     t.index ["name"], name: "index_users_on_name", unique: true
